@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addCurrencyRowTwo, addAmountTwo } from './redux/currencyRowSlice'
+import { addCurrencyRowTwo, addAmountTwo } from './Store/currencyRowSlice'
 
 export default function CurrencyRowTwo(props) {
   const newCurrency = useSelector((state) => state.currencyRow);

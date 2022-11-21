@@ -20,8 +20,6 @@ export default function App() {
     });
   }, []);
 
- 
-
   const convert = async (from, to, amount) => {
     const API_URL = `https://api.exchangerate.host/convert?from=${from}&to=${to}&amount=${amount}`;
     let result = await axios.get(API_URL);

@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Currency Conversion
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created with [Create React App](https://github.com/facebook/create-react-app) and [Redux Toolkit](https://redux-toolkit.js.org/).
 
 ## Available Scripts
 
