@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { addCurrencyRow, addAmount } from "./Store/currencyRowSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function CurrencyRow(props) {
-  const [inputVal, SetInputVal] = useState("");
+  const newCurrency = useSelector((state) => state.currencyRow);
+  console.log('one newCurrency: ', newCurrency)
+  const [inputVal, setInputVal] = useState("");
   const {
     currencyOptions,
   } = props;
+
+  useEffect(() => {
+    if(newCurrency.conversionResultTwo){
+      setInputVal(newCurrency.conversionResultTwo)
+    }
+  }, [newCurrency])
 
   const dispatch = useDispatch();
 
@@ -19,7 +27,7 @@ export default function CurrencyRow(props) {
   };
 
   const handleInputChange = (e) => {
-    SetInputVal(e.target.value)
+    setInputVal(e.target.value)
     dispatch(addAmount(e.target.value))
   }
 

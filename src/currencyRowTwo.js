@@ -4,6 +4,7 @@ import { addCurrencyRowTwo, addAmountTwo } from './Store/currencyRowSlice'
 
 export default function CurrencyRowTwo(props) {
   const newCurrency = useSelector((state) => state.currencyRow);
+  console.log('two newCurrency: ', newCurrency)
   const [inputValTwo, setInputValTwo] = useState("");
   const {
     currencyOptions,
