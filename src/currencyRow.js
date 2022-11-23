@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function CurrencyRow(props) {
   const newCurrency = useSelector((state) => state.currencyRow);
-  console.log('one newCurrency: ', newCurrency)
   const [inputVal, setInputVal] = useState("");
   const {
     currencyOptions,

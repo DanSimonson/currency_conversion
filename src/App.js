@@ -13,7 +13,6 @@ export default function App() {
   const [currencyOptions, setCurrencyOptions] = useState([]);
   const [currencyResult, setCurrencyResult] = useState("");
   const newCurrency = useSelector((state) => state.currencyRow);
-  console.log("app newCurrency: ", newCurrency);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -75,11 +74,7 @@ export default function App() {
   };
 
   const convertAndStore = async (fromCurrency, toCurrency, amount) => {
-    console.log("fromCurrency: ", fromCurrency);
-    console.log("toCurrency: ", toCurrency);
-    console.log("amount: ", amount);
-    console.log("newCurrency.amount: ", newCurrency.amount);
-    console.log("newCurrency.amountTwo: ", newCurrency.amountTwo);
+    
     if (newCurrency.amount !== 0) {
       let currencyConversion = await convert(fromCurrency, toCurrency, amount);
       let currencyConversionResult = Number(currencyConversion.result);
