@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useForceUpdate, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCurrencyRowTwo, addAmountTwo } from "./Store/currencyRowSlice";
+import { addCurrencyRowTwo, addAmountTwo, addConversionResultTwo, addConversionResult } from "./Store/currencyRowSlice";
 
 export default function CurrencyRowTwo(props) {
   const newCurrency = useSelector((state) => state.currencyRow);
@@ -28,6 +28,8 @@ export default function CurrencyRowTwo(props) {
 
   const handleMouse = (e) => {
     setInputValTwo("");
+    dispatch(addAmountTwo(0))
+    dispatch(addConversionResultTwo(''))
   };
   
 
