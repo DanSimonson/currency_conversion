@@ -1,30 +1,35 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { addCurrencyRowTwo, addAmountTwo } from './Store/currencyRowSlice'
+import React, { useEffect, useState, useForceUpdate, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addCurrencyRowTwo, addAmountTwo } from "./Store/currencyRowSlice";
 
 export default function CurrencyRowTwo(props) {
   const newCurrency = useSelector((state) => state.currencyRow);
   const [inputValTwo, setInputValTwo] = useState("");
-  const {
-    currencyOptions,
-  } = props
+  const [rerender, setRerender] = useState(false);
+  const { currencyOptions } = props;
 
   useEffect(() => {
-    if(newCurrency.conversionResult){
-      setInputValTwo(newCurrency.conversionResult)
+    console.log('in useEffect rowTwo newCurrency ConversionResult: ', newCurrency)
+    if (newCurrency.conversionResult) {
+      setInputValTwo(newCurrency.conversionResult);
     }
-  }, [newCurrency])
+  }, [newCurrency]);
 
   const dispatch = useDispatch();
 
   const getSelectedTwo = (e) => {
-    dispatch(addCurrencyRowTwo(e.target.value))
-  }
+    dispatch(addCurrencyRowTwo(e.target.value));
+  };
 
   const handleInputChange = (e) => {
-    setInputValTwo(e.target.value)
-    dispatch(addAmountTwo(e.target.value))
-  }
+    setInputValTwo(e.target.value);
+    dispatch(addAmountTwo(e.target.value));
+  };
+
+  const handleMouse = (e) => {
+    setInputValTwo("");
+  };
+  
 
   return (
     <>
@@ -33,12 +38,15 @@ export default function CurrencyRowTwo(props) {
         className="input"
         value={inputValTwo}
         onChange={handleInputChange}
+        onMouseDown={handleMouse}
       />
       <select onChange={getSelectedTwo}>
         {currencyOptions.map((option, index) => (
-          <option key={index} value={option}>{option}</option>
+          <option key={index} value={option}>
+            {option}
+          </option>
         ))}
       </select>
     </>
-  )
+  );
 }

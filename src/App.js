@@ -8,11 +8,12 @@ import { useSelector, useDispatch } from "react-redux";
 // import useStateData from "./CustomHooks/useStateData";
 // import store from "./Store/store";
 export default function App() {
-  let conversion = {};
-  let conversionResult = 0;
+  // let conversion = {};
+  // let conversionResult = 0;
   const [currencyOptions, setCurrencyOptions] = useState([]);
   const [currencyResult, setCurrencyResult] = useState("");
   const newCurrency = useSelector((state) => state.currencyRow);
+  console.log('newCurrency: ', newCurrency);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,6 +23,7 @@ export default function App() {
   }, []);
   useEffect(() => {
     getNewCurrency();
+    console.log('app useEffect newCurrency: ', newCurrency)
   }, [newCurrency]);
 
   const convert = async (from, to, amount) => {
@@ -101,7 +103,7 @@ export default function App() {
         <div className="thirdCol">
           <CurrencyRowTwo
             currencyOptions={currencyOptions}
-            conversionResult={conversionResult}
+            // conversionResult={conversionResult}
           />
         </div>
       </main>
