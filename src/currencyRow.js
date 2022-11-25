@@ -34,6 +34,11 @@ export default function CurrencyRow(props) {
       newCurrency.amountTwo !== ""
     ) {
       setInputVal(newCurrency.conversionResultTwo);
+    }else if (newCurrency.inputOne === false &&
+      newCurrency.conversionResultTwo !== "" &&
+      newCurrency.conversionResultTwo !== 0 &&
+      newCurrency.amountTwo !== ""){
+        setInputVal(newCurrency.conversionResultTwo);
     }
   }, [newCurrency]);
 
@@ -61,6 +66,7 @@ export default function CurrencyRow(props) {
       newCurrency.conversionResultTwo === 0
     ) {
       dispatch(removeInputOne(false));
+      //dispatch(addConversionResultTwo())
     }
 
     // if(newCurrency.conversionResultTwo !== '') {

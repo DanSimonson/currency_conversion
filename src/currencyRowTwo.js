@@ -29,7 +29,7 @@ export default function CurrencyRowTwo(props) {
     ) {
       setInputValTwo("");
     }
-    if (newCurrency.conversionResult !== "") {
+    if (newCurrency.conversionResultTwo !== "" && newCurrency.amountTwo !== 0) {
       // setInputValTwo(newCurrency.conversionResult);
     }
   }, [newCurrency]);
