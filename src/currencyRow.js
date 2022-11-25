@@ -2,6 +2,7 @@ import React, { useState, useEffect, useReducer } from "react";
 import {
   addCurrencyRow,
   addAmount,
+  addAmountTwo,
   addConversionResult,
   addConversionResultTwo,
   removeInputOne,
@@ -51,7 +52,17 @@ export default function CurrencyRow(props) {
     dispatch(addAmount(e.target.value));
   };
   const handleMouse = (e) => {
-    dispatch(removeInputOne(false));
+    if (newCurrency.amountTwo !== 0 && newCurrency.conversionResultTwo !== 0) {
+      dispatch(removeInputOne(false));
+      dispatch(addConversionResultTwo(""));
+      dispatch(addAmountTwo(0));
+    } else if (
+      newCurrency.AmountTwo === 0 &&
+      newCurrency.conversionResultTwo === 0
+    ) {
+      dispatch(removeInputOne(false));
+    }
+
     // if(newCurrency.conversionResultTwo !== '') {
     //   setInputVal(newCurrency.conversionResultTwo)
     // }
