@@ -47,7 +47,7 @@ export default function CurrencyRowTwo(props) {
 
   const handleMouse = (e) => {
     if (newCurrency.amount !== 0 && newCurrency.conversionResult !== "") {
-      setInputValTwo("");
+      // setInputValTwo("");
       dispatch(addAmountTwo(0));
       dispatch(addAmount(0));
       dispatch(addConversionResult(""));
