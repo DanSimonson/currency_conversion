@@ -7,6 +7,7 @@ const initialState = {
   amountTwo: 0,
   conversionResult: "",
   conversionResultTwo: "",
+  inputOne: false,
 };
 
 const currencyRowSlice = createSlice({
@@ -22,7 +23,7 @@ const currencyRowSlice = createSlice({
     },
 
     addAmount: (state, action) => {
-    state.amount = action.payload;
+      state.amount = action.payload;
     },
 
     addAmountTwo: (state, action) => {
@@ -34,10 +35,21 @@ const currencyRowSlice = createSlice({
     },
     addConversionResultTwo: (state, action) => {
       state.conversionResultTwo = action.payload;
-    }
+    },
+    removeInputOne: (state, action) => {
+      state.inputOne = action.payload;
+    },
   },
 });
 
-export const { addCurrencyRow, addCurrencyRowTwo, addAmount, addAmountTwo, addConversionResult, addConversionResultTwo } = currencyRowSlice.actions;
+export const {
+  addCurrencyRow,
+  addCurrencyRowTwo,
+  addAmount,
+  addAmountTwo,
+  addConversionResult,
+  addConversionResultTwo,
+  removeInputOne,
+} = currencyRowSlice.actions;
 
 export default currencyRowSlice.reducer;

@@ -1,6 +1,13 @@
 import React, { useEffect, useState, useForceUpdate, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCurrencyRowTwo, addAmountTwo, addConversionResultTwo, addConversionResult } from "./Store/currencyRowSlice";
+import {
+  addCurrencyRowTwo,
+  addAmountTwo,
+  addAmount,
+  addConversionResultTwo,
+  addConversionResult,
+  removeInputOne,
+} from "./Store/currencyRowSlice";
 
 export default function CurrencyRowTwo(props) {
   const newCurrency = useSelector((state) => state.currencyRow);
@@ -9,9 +16,21 @@ export default function CurrencyRowTwo(props) {
   const { currencyOptions } = props;
 
   useEffect(() => {
-    console.log('in useEffect rowTwo newCurrency ConversionResult: ', newCurrency)
-    if (newCurrency.conversionResult) {
+    console.log(
+      "in useEffect rowTwo newCurrency ConversionResult: ",
+      newCurrency
+    );
+    if (newCurrency.amount !== 0 && newCurrency.conversionResult !== "") {
       setInputValTwo(newCurrency.conversionResult);
+    }
+    if (
+      newCurrency.amount !== 0 &&
+      (newCurrency.conversionResult !== "") & (newCurrency.inputOne === true)
+    ) {
+      setInputValTwo("");
+    }
+    if (newCurrency.conversionResult !== "") {
+      // setInputValTwo(newCurrency.conversionResult);
     }
   }, [newCurrency]);
 
@@ -27,11 +46,14 @@ export default function CurrencyRowTwo(props) {
   };
 
   const handleMouse = (e) => {
-    setInputValTwo("");
-    dispatch(addAmountTwo(0))
-    dispatch(addConversionResultTwo(''))
+    if (newCurrency.amount !== 0 && newCurrency.conversionResult !== "") {
+      setInputValTwo("");
+      dispatch(addAmountTwo(0));
+      dispatch(addAmount(0));
+      dispatch(addConversionResult(""));
+      dispatch(removeInputOne(true));
+    }
   };
-  
 
   return (
     <>
@@ -40,7 +62,7 @@ export default function CurrencyRowTwo(props) {
         className="input"
         value={inputValTwo}
         onChange={handleInputChange}
-        onMouseDown={handleMouse}
+        onMouseEnter={handleMouse}
       />
       <select onChange={getSelectedTwo}>
         {currencyOptions.map((option, index) => (

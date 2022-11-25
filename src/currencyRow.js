@@ -1,5 +1,11 @@
 import React, { useState, useEffect, useReducer } from "react";
-import { addCurrencyRow, addAmount, addConversionResult } from "./Store/currencyRowSlice";
+import {
+  addCurrencyRow,
+  addAmount,
+  addConversionResult,
+  addConversionResultTwo,
+  removeInputOne,
+} from "./Store/currencyRowSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function CurrencyRow(props) {
@@ -7,40 +13,55 @@ export default function CurrencyRow(props) {
   const [inputVal, setInputVal] = useState("");
   const [rerender, setRerender] = useState(false);
   let x;
-  const [ignored, forceUpdate] = useReducer(x = x + 1, 0)
-  const {
-    currencyOptions,
-  } = props;
+  const [ignored, forceUpdate] = useReducer((x = x + 1), 0);
+  const { currencyOptions } = props;
 
   useEffect(() => {
-    if(newCurrency.conversionResultTwo){
-      setInputVal(newCurrency.conversionResultTwo)
+    // if(newCurrency.conversionResultTwo){
+    //   setInputVal(newCurrency.conversionResultTwo)
+    // }
+    if (
+      newCurrency.amount !== 0 &&
+      newCurrency.conversionResult !== "" &&
+      newCurrency.inputOne === true
+    ) {
+      setInputVal("");
+    } else if (
+      newCurrency.inputOne === true &&
+      newCurrency.conversionResultTwo !== "" &&
+      newCurrency.conversionResultTwo !== 0 &&
+      newCurrency.amountTwo !== ""
+    ) {
+      setInputVal(newCurrency.conversionResultTwo);
     }
-  }, [newCurrency])
+  }, [newCurrency]);
 
   const dispatch = useDispatch();
 
   const getSelected = (e) => {
-    if(!e.target.value){
-      dispatch.addCurrencyRow('USD')
+    if (!e.target.value) {
+      dispatch.addCurrencyRow("USD");
       return;
     }
     dispatch(addCurrencyRow(e.target.value));
   };
 
   const handleInputChange = (e) => {
-    setInputVal(e.target.value)
-    dispatch(addAmount(e.target.value))
-  }
+    setInputVal(e.target.value);
+    dispatch(addAmount(e.target.value));
+  };
   const handleMouse = (e) => {
+    dispatch(removeInputOne(false));
+    // if(newCurrency.conversionResultTwo !== '') {
+    //   setInputVal(newCurrency.conversionResultTwo)
+    // }
     // setRerender(!rerender);
-    setInputVal('');
-    dispatch(addAmount(0))
-    dispatch(addConversionResult(''))
+    // setInputVal('');
+    // dispatch(addAmount(0))
+    // dispatch(addConversionResult(''))
     /*now set inputValTwo = '' and see 
     what happens */
-    
-  }
+  };
 
   return (
     <>
