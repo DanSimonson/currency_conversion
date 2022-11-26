@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect } from "react";
 import {
   addCurrencyRow,
   addAmount,
@@ -11,9 +11,6 @@ import { useDispatch, useSelector } from "react-redux";
 export default function CurrencyRow(props) {
   const newCurrency = useSelector((state) => state.currencyRow);
   const [inputVal, setInputVal] = useState("");
-  const [rerender, setRerender] = useState(false);
-  let x;
-  const [ignored, forceUpdate] = useReducer((x = x + 1), 0);
   const { currencyOptions } = props;
 
   useEffect(() => {

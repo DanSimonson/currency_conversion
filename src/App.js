@@ -3,12 +3,15 @@ import "./App.css";
 import CurrencyRow from "./currencyRow";
 import CurrencyRowTwo from "./currencyRowTwo";
 import axios from "axios";
-import { addConversionResult, addConversionResultTwo } from "./Store/currencyRowSlice.js";
+import {
+  addConversionResult,
+  addConversionResultTwo,
+} from "./Store/currencyRowSlice.js";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function App() {
   const [currencyOptions, setCurrencyOptions] = useState([]);
-  const [currencyResult, setCurrencyResult] = useState("");
+  // const [currencyResult, setCurrencyResult] = useState("");
   const newCurrency = useSelector((state) => state.currencyRow);
   const dispatch = useDispatch();
 
@@ -71,14 +74,17 @@ export default function App() {
   };
 
   const convertAndStore = async (fromCurrency, toCurrency, amount) => {
-    
     if (newCurrency.amount !== 0) {
       let currencyConversion = await convert(fromCurrency, toCurrency, amount);
       let currencyConversionResult = Number(currencyConversion.result);
       dispatch(addConversionResult(currencyConversionResult));
     } else {
       //change for backward conversion
-      let currencyConversion = await convert(toCurrency, fromCurrency, newCurrency.amountTwo);
+      let currencyConversion = await convert(
+        toCurrency,
+        fromCurrency,
+        newCurrency.amountTwo
+      );
       let currencyConversionResultTwo = Number(currencyConversion.result);
       dispatch(addConversionResultTwo(currencyConversionResultTwo));
     }
@@ -95,9 +101,7 @@ export default function App() {
           <div className="equals">=</div>
         </div>
         <div className="thirdCol">
-          <CurrencyRowTwo
-            currencyOptions={currencyOptions}
-          />
+          <CurrencyRowTwo currencyOptions={currencyOptions} />
         </div>
       </main>
     </>
