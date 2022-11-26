@@ -14,10 +14,7 @@ export default function CurrencyRowTwo(props) {
   const { currencyOptions } = props;
 
   useEffect(() => {
-    console.log(
-      "in useEffect rowTwo newCurrency ConversionResult: ",
-      newCurrency
-    );
+    
     if (newCurrency.amount !== 0 && newCurrency.conversionResult !== "") {
       setInputValTwo(newCurrency.conversionResult);
     }

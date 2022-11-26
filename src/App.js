@@ -10,18 +10,15 @@ export default function App() {
   const [currencyOptions, setCurrencyOptions] = useState([]);
   const [currencyResult, setCurrencyResult] = useState("");
   const newCurrency = useSelector((state) => state.currencyRow);
-  console.log('newCurrency: ', newCurrency);
   const dispatch = useDispatch();
 
   useEffect(() => {
     axios.get("https://api.exchangerate.host/latest?base=USD").then((res) => {
-      console.log('res.data: ', res.data)
       setCurrencyOptions([res.data.base, ...Object.keys(res.data.rates)]);
     });
   }, []);
   useEffect(() => {
     getNewCurrency();
-    console.log('app useEffect newCurrency: ', newCurrency)
   }, [newCurrency]);
 
   const convert = async (from, to, amount) => {
