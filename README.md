@@ -10,7 +10,8 @@ This project was created with [Create React App](https://github.com/facebook/cre
 
 ## App Info
 
-This is Dan Simonson's Currency Converter Application using: React, Redux-Toolkit, exchangerate.host, Axios
+This is Dan Simonson's Currency Converter Application using: React Redux-Toolkit,
+exchangerate.host, Axios
 
 ### Author
 
