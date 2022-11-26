@@ -4,7 +4,6 @@ import {
   addCurrencyRowTwo,
   addAmountTwo,
   addAmount,
-  addConversionResultTwo,
   addConversionResult,
   removeInputOne,
 } from "./Store/currencyRowSlice";
@@ -12,7 +11,6 @@ import {
 export default function CurrencyRowTwo(props) {
   const newCurrency = useSelector((state) => state.currencyRow);
   const [inputValTwo, setInputValTwo] = useState("");
-  const [rerender, setRerender] = useState(false);
   const { currencyOptions } = props;
 
   useEffect(() => {
@@ -30,7 +28,6 @@ export default function CurrencyRowTwo(props) {
       setInputValTwo("");
     }
     if (newCurrency.conversionResultTwo !== "" && newCurrency.amountTwo !== 0) {
-      // setInputValTwo(newCurrency.conversionResult);
     }
   }, [newCurrency]);
 
@@ -47,7 +44,6 @@ export default function CurrencyRowTwo(props) {
 
   const handleMouse = (e) => {
     if (newCurrency.amount !== 0 && newCurrency.conversionResult !== "") {
-      // setInputValTwo("");
       dispatch(addAmountTwo(0));
       dispatch(addAmount(0));
       dispatch(addConversionResult(""));

@@ -18,9 +18,6 @@ export default function CurrencyRow(props) {
   const { currencyOptions } = props;
 
   useEffect(() => {
-    // if(newCurrency.conversionResultTwo){
-    //   setInputVal(newCurrency.conversionResultTwo)
-    // }
     if (
       newCurrency.amount !== 0 &&
       newCurrency.conversionResult !== "" &&
@@ -66,18 +63,7 @@ export default function CurrencyRow(props) {
       newCurrency.conversionResultTwo === 0
     ) {
       dispatch(removeInputOne(false));
-      //dispatch(addConversionResultTwo())
     }
-
-    // if(newCurrency.conversionResultTwo !== '') {
-    //   setInputVal(newCurrency.conversionResultTwo)
-    // }
-    // setRerender(!rerender);
-    // setInputVal('');
-    // dispatch(addAmount(0))
-    // dispatch(addConversionResult(''))
-    /*now set inputValTwo = '' and see 
-    what happens */
   };
 
   return (

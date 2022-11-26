@@ -5,11 +5,8 @@ import CurrencyRowTwo from "./currencyRowTwo";
 import axios from "axios";
 import { addConversionResult, addConversionResultTwo } from "./Store/currencyRowSlice.js";
 import { useSelector, useDispatch } from "react-redux";
-// import useStateData from "./CustomHooks/useStateData";
-// import store from "./Store/store";
+
 export default function App() {
-  // let conversion = {};
-  // let conversionResult = 0;
   const [currencyOptions, setCurrencyOptions] = useState([]);
   const [currencyResult, setCurrencyResult] = useState("");
   const newCurrency = useSelector((state) => state.currencyRow);
@@ -18,6 +15,7 @@ export default function App() {
 
   useEffect(() => {
     axios.get("https://api.exchangerate.host/latest?base=USD").then((res) => {
+      console.log('res.data: ', res.data)
       setCurrencyOptions([res.data.base, ...Object.keys(res.data.rates)]);
     });
   }, []);
@@ -91,11 +89,10 @@ export default function App() {
 
   return (
     <>
-      <h1>Convert</h1>
+      <h1>Currency Conversion</h1>
       <main id="box">
         <div className="firstCol">
           <CurrencyRow currencyOptions={currencyOptions} />
-          {/* <button onClick={getNewCurrency}>convertCurrency</button> */}
         </div>
         <div className="secondCol">
           <div className="equals">=</div>
@@ -103,7 +100,6 @@ export default function App() {
         <div className="thirdCol">
           <CurrencyRowTwo
             currencyOptions={currencyOptions}
-            // conversionResult={conversionResult}
           />
         </div>
       </main>
