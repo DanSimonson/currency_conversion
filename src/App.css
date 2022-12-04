@@ -38,16 +38,16 @@ button:hover {
   border-radius: 0.3em;
   padding: 0.5rem 2rem;
   margin-right: 2rem;
-  width: 8rem; 
+  width: 8rem;
   height: 2rem;
   font-size: 20px;
   font-family: Arial;
 }
 select {
   border-radius: 5px;
-  margin-left: 0; 
+  margin-left: 0;
   margin-top: 1rem;
-  width: 12rem; 
+  width: 12rem;
   height: 2rem;
   font-size: 18px;
   font-family: Arial;
@@ -58,8 +58,8 @@ select {
   font-size: 2rem;
   margin-top: 2rem;
   padding: 0.5rem 2rem;
-  margin-left: 1.8rem; 
-  margin-right: 1rem; 
+  margin-left: 1.8rem;
+  margin-right: 1rem;
 }
 
 .firstCol {
@@ -82,4 +82,22 @@ select {
 }
 #box {
   display: flex;
+}
+
+/* On screens that are 600px wide or less, make the menu links stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  #box {
+    flex-direction: column;
+    align-items: center;
+  }
+  .thirdCol {
+    width: 7rem;
+    margin-right: 5.6rem;
+  }
+  .equals {
+    margin-left: 0;
+    margin-right: 3rem;
+    margin-bottom: 1rem;
+    padding: 0 2rem;
+  }
 }
