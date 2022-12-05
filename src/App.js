@@ -15,8 +15,8 @@ export default function App() {
   const [amount2, setAmount2] = useState(1);
   const [amount3, setAmount3] = useState(1);
   const [currency1, setCurrency1] = useState("USD");
-  const [currency2, setCurrency2] = useState("USD");
-  // const [currency3, setCurrency3] = useState("PHP");
+  const [currency2, setCurrency2] = useState("AUD");
+  const [currency3, setCurrency3] = useState("PHP");
   const [currencyOptions, setCurrencyOptions] = useState([]);
 
   //return currencies from API using axios
@@ -43,11 +43,11 @@ export default function App() {
         (amount1 * currencyOptions[currency2]) / currencyOptions[currency1]
       )
     );
-    // setAmount3(
-    //   format(
-    //     (amount1 * currencyOptions[currency3]) / currencyOptions[currency1]
-    //   )
-    // );
+    setAmount3(
+      format(
+        (amount1 * currencyOptions[currency3]) / currencyOptions[currency1]
+      )
+    );
     setAmount1(amount1);
   }
 
@@ -71,11 +71,11 @@ export default function App() {
         (amount2 * currencyOptions[currency1]) / currencyOptions[currency2]
       )
     );
-    // setAmount3(
-    //   format(
-    //     (amount2 * currencyOptions[currency3]) / currencyOptions[currency2]
-    //   )
-    // );
+    setAmount3(
+      format(
+        (amount2 * currencyOptions[currency3]) / currencyOptions[currency2]
+      )
+    );
     setAmount2(amount2);
   }
 
@@ -97,8 +97,21 @@ export default function App() {
     setCurrency2(currency2);
   }
 
-  function handleAmount3Change(amount3) {}
-  function handleCurrency3Change(currency1) {}
+  function handleAmount3Change(amount3) {
+    setAmount1(
+      format(
+        (amount3 * currencyOptions[currency1]) / currencyOptions[currency3]
+      )
+    );
+    setAmount2(
+      format(
+        (amount3 * currencyOptions[currency2]) / currencyOptions[currency3]
+      )
+    );
+    
+    setAmount3(amount3)
+  }
+  function handleCurrency3Change(currency3) {}
 
   return (
     <>
@@ -117,13 +130,13 @@ export default function App() {
         amount={amount2}
         currency={currency2}
       />
-      {/* <CurrencyInput
+      <CurrencyInput
         onAmountChange={handleAmount3Change}
         onCurrencyChange={handleCurrency3Change}
         currencies={Object.keys(currencyOptions)}
         amount={amount3}
         currency={currency3}
-      /> */}
+      />
     </>
   );
 }
