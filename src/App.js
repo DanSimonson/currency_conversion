@@ -57,11 +57,11 @@ export default function App() {
         (amount1 * currencyOptions[currency2]) / currencyOptions[currency1]
       )
     );
-    // setAmount3(
-    //   format(
-    //     (amount1 * currencyOptions[currency3]) / currencyOptions[currency1]
-    //   )
-    // );
+    setAmount3(
+      format(
+        (amount1 * currencyOptions[currency3]) / currencyOptions[currency1]
+      )
+    );
     setCurrency1(currency1);
   }
 
@@ -85,15 +85,11 @@ export default function App() {
         (amount2 * currencyOptions[currency1]) / currencyOptions[currency2]
       )
     );
-    //   setAmount3(
-    //     (amount2 * currencyOptions[currency3]) / currencyOptions[currency2]
-    //   )
-    // ))
-    // setAmount3(
-    //   format(
-    //     (amount2 * currencyOptions[currency3]) / currencyOptions[currency2]
-    //   )
-    // );
+    setAmount3(
+      format(
+        (amount2 * currencyOptions[currency3]) / currencyOptions[currency2]
+      )
+    );
     setCurrency2(currency2);
   }
 
@@ -108,10 +104,22 @@ export default function App() {
         (amount3 * currencyOptions[currency2]) / currencyOptions[currency3]
       )
     );
-    
+
     setAmount3(amount3)
   }
-  function handleCurrency3Change(currency3) {}
+  function handleCurrency3Change(currency3) {
+    setAmount1(
+      format(
+        (amount3 * currencyOptions[currency1]) / currencyOptions[currency3]
+      )
+    );
+    setAmount2(
+      format(
+        (amount3 * currencyOptions[currency2]) / currencyOptions[currency3]
+      )
+    );
+    setCurrency3(currency3);
+  }
 
   return (
     <>
