@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import CurrencyInput from "./CurrencyInput";
-// import CurrencyRow from "./CurrencyRow";
-// import CurrencyRowTwo from "./CurrencyRowTwo";
 import axios from "axios";
-// import {
-//   addConversionResult,
-//   addConversionResultTwo,
-// } from "./Store/currencyRowSlice.js";
-// import { useSelector, useDispatch } from "react-redux";
 
 export default function App() {
   const [amount1, setAmount1] = useState(1);
@@ -18,7 +11,7 @@ export default function App() {
   const [currency1, setCurrency1] = useState("USD");
   const [currency2, setCurrency2] = useState("AUD");
   const [currency3, setCurrency3] = useState("PHP");
-  const [currency4, setCurrency4] = useState("CAD")
+  const [currency4, setCurrency4] = useState("CAD");
   const [currencyOptions, setCurrencyOptions] = useState([]);
 
   //return currencies from API using axios
@@ -127,7 +120,7 @@ export default function App() {
       )
     );
 
-    setAmount3(amount3)
+    setAmount3(amount3);
   }
   function handleCurrency3Change(currency3) {
     setAmount1(
@@ -148,7 +141,7 @@ export default function App() {
 
     setCurrency3(currency3);
   }
-  function handleAmount4Change(amount4){
+  function handleAmount4Change(amount4) {
     setAmount1(
       format(
         (amount4 * currencyOptions[currency1]) / currencyOptions[currency4]
@@ -165,9 +158,9 @@ export default function App() {
       )
     );
 
-    setAmount4(amount4)
+    setAmount4(amount4);
   }
-  function handleCurrency4Change(currency4){
+  function handleCurrency4Change(currency4) {
     setAmount1(
       format(
         (amount4 * currencyOptions[currency1]) / currencyOptions[currency4]
