@@ -14,9 +14,11 @@ export default function App() {
   const [amount1, setAmount1] = useState(1);
   const [amount2, setAmount2] = useState(1);
   const [amount3, setAmount3] = useState(1);
+  const [amount4, setAmount4] = useState(1);
   const [currency1, setCurrency1] = useState("USD");
   const [currency2, setCurrency2] = useState("AUD");
   const [currency3, setCurrency3] = useState("PHP");
+  const [currency4, setCurrency4] = useState("CAD")
   const [currencyOptions, setCurrencyOptions] = useState([]);
 
   //return currencies from API using axios
@@ -26,12 +28,6 @@ export default function App() {
       setCurrencyOptions(res.data.rates);
     });
   }, []);
-
-  const convert = async (from, to, amount) => {
-    const API_URL = `https://api.exchangerate.host/convert?from=${from}&to=${to}&amount=${amount}`;
-    let result = await axios.get(API_URL);
-    return result.data;
-  };
 
   function format(number) {
     return number.toFixed(4);
@@ -48,6 +44,12 @@ export default function App() {
         (amount1 * currencyOptions[currency3]) / currencyOptions[currency1]
       )
     );
+    setAmount4(
+      format(
+        (amount1 * currencyOptions[currency4]) / currencyOptions[currency1]
+      )
+    );
+
     setAmount1(amount1);
   }
 
@@ -60,6 +62,11 @@ export default function App() {
     setAmount3(
       format(
         (amount1 * currencyOptions[currency3]) / currencyOptions[currency1]
+      )
+    );
+    setAmount4(
+      format(
+        (amount1 * currencyOptions[currency4]) / currencyOptions[currency1]
       )
     );
     setCurrency1(currency1);
@@ -76,6 +83,11 @@ export default function App() {
         (amount2 * currencyOptions[currency3]) / currencyOptions[currency2]
       )
     );
+    setAmount4(
+      format(
+        (amount2 * currencyOptions[currency4]) / currencyOptions[currency2]
+      )
+    );
     setAmount2(amount2);
   }
 
@@ -88,6 +100,11 @@ export default function App() {
     setAmount3(
       format(
         (amount2 * currencyOptions[currency3]) / currencyOptions[currency2]
+      )
+    );
+    setAmount4(
+      format(
+        (amount2 * currencyOptions[currency4]) / currencyOptions[currency2]
       )
     );
     setCurrency2(currency2);
@@ -104,6 +121,11 @@ export default function App() {
         (amount3 * currencyOptions[currency2]) / currencyOptions[currency3]
       )
     );
+    setAmount4(
+      format(
+        (amount3 * currencyOptions[currency4]) / currencyOptions[currency3]
+      )
+    );
 
     setAmount3(amount3)
   }
@@ -118,7 +140,50 @@ export default function App() {
         (amount3 * currencyOptions[currency2]) / currencyOptions[currency3]
       )
     );
+    setAmount4(
+      format(
+        (amount3 * currencyOptions[currency4]) / currencyOptions[currency3]
+      )
+    );
+
     setCurrency3(currency3);
+  }
+  function handleAmount4Change(amount4){
+    setAmount1(
+      format(
+        (amount4 * currencyOptions[currency1]) / currencyOptions[currency4]
+      )
+    );
+    setAmount2(
+      format(
+        (amount4 * currencyOptions[currency2]) / currencyOptions[currency4]
+      )
+    );
+    setAmount3(
+      format(
+        (amount4 * currencyOptions[currency3]) / currencyOptions[currency4]
+      )
+    );
+
+    setAmount4(amount4)
+  }
+  function handleCurrency4Change(currency4){
+    setAmount1(
+      format(
+        (amount4 * currencyOptions[currency1]) / currencyOptions[currency4]
+      )
+    );
+    setAmount2(
+      format(
+        (amount4 * currencyOptions[currency2]) / currencyOptions[currency4]
+      )
+    );
+    setAmount3(
+      format(
+        (amount4 * currencyOptions[currency3]) / currencyOptions[currency4]
+      )
+    );
+    setCurrency4(currency4);
   }
 
   return (
@@ -144,6 +209,13 @@ export default function App() {
         currencies={Object.keys(currencyOptions)}
         amount={amount3}
         currency={currency3}
+      />
+      <CurrencyInput
+        onAmountChange={handleAmount4Change}
+        onCurrencyChange={handleCurrency4Change}
+        currencies={Object.keys(currencyOptions)}
+        amount={amount4}
+        currency={currency4}
       />
     </>
   );
