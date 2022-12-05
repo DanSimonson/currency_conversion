@@ -17,13 +17,12 @@ export default function App() {
   //return currencies from API using axios
   useEffect(() => {
     axios.get("https://api.exchangerate.host/latest?base=USD").then((res) => {
-      // setCurrencyOptions([res.data.base, ...Object.keys(res.data.rates)]);
       setCurrencyOptions(res.data.rates);
     });
   }, []);
 
   function format(number) {
-    return number.toFixed(4);
+    return number.toFixed(3);
   }
 
   function handleAmount1Change(amount1) {

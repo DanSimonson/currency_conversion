@@ -3,7 +3,7 @@
     width: 180px;
     margin: 0 auto 20px;
     display: grid;
-    grid-template-columns: 100px 80px;
+    grid-template-columns: 150px 100px;
     border-radius: 15px;
 }
 input,select{
@@ -12,10 +12,13 @@ input,select{
     border:none;
     outline: none;
     color: greenyellow;
+
 }
 input{
-    padding-left: 10px;
+    padding-left: 1rem;
 }
 select{
     padding: 15px;
+    width: 100px;
+
 }
