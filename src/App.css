@@ -1,4 +1,78 @@
-body {
+body{
+  background-color: #161616;
+  color: #ddd;
+  padding: 50px;
+}
+h1{
+  color: #eef;
+  text-align: center;
+}
+
+/* body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+}
+.input {
+  border: 1px solid #333;
+  border-radius: 0.3em;
+  padding: 0.5rem 2rem;
+  margin-right: 2rem;
+  width: 8rem;
+  height: 2rem;
+  font-size: 20px;
+  font-family: Arial;
+}
+select {
+  border-radius: 5px;
+  margin-left: 0;
+  margin-top: 1rem;
+  width: 12rem;
+  height: 2rem;
+  font-size: 18px;
+  font-family: Arial;
+  background-color: #f9f9f9;
+}
+.equals {
+  font-weight: bold;
+  font-size: 2rem;
+  margin-top: 2rem;
+  padding: 0.5rem 2rem;
+  margin-left: 1.8rem;
+  margin-right: 1rem;
+}
+
+.some-page-wrapper {
+  margin: 15px;
+  /* background-color: red; */
+/* } */
+
+/* .row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+ } 
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.double-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 2;
+} */
+
+
+/* body {
   margin: 0;
   display: flex;
   justify-content: center;
@@ -82,10 +156,10 @@ select {
 }
 #box {
   display: flex;
-}
+} */
 
 /* On screens that are 600px wide or less, make the menu links stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
   #box {
     flex-direction: column;
     align-items: center;
@@ -100,4 +174,4 @@ select {
     margin-bottom: 1rem;
     padding: 0 2rem;
   }
-}
+} */
